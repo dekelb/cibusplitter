@@ -1,0 +1,84 @@
+body {
+    width: 500px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#content {
+    padding: 10px;
+}
+#copy {
+    font-size: 11px;
+    color: rgb(32, 33, 37);
+    padding: 5px 0;
+}
+#copy a {
+    color: rgb(32, 33, 37);
+}
+h1 {
+    direction: rtl;
+    color: rgb(0, 157, 224);
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+#split-again {
+    float: left;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 4px;
+}
+#split-again:hover {
+    background: #C2C2C2;
+    transition: 0.3s ease;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 0.125rem 0px,
+    rgb(0 0 0 / 24%) 0px 0.125rem 0.125rem 0px;
+}
+.split-icon {
+    width: 30px;
+    height: 30px;
+}
+#conversion-table,
+#current-order {
+    direction: rtl;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 0.125rem 0px,
+        rgb(0 0 0 / 24%) 0px 0.125rem 0.125rem 0px;
+    font-size: 0.8rem;
+    padding: 5px 0;
+    margin-bottom: 15px;
+}
+#conversion-table header,
+#current-order header {
+    font-weight: bold;
+    color: rgb(32, 33, 37);
+    border-bottom: 1px solid rgb(32, 33, 37);
+    padding: 5px;
+    font-size: 0.8rem;
+}
+#conversion-table .row,
+#current-order .row {
+    display: flex;
+    padding: 3px;
+    transition: 0.3s ease;
+}
+#conversion-table .col,
+#current-order .col {
+    flex: 1;
+}
+#conversion-table div.row:hover,
+#current-order div.row:hover {
+    background: rgba(32, 33, 37, 8%);
+    transition: 0.3s ease;
+}
+.actions .add {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    float: left;
+}
+.actions .remove {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
