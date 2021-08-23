@@ -1,4 +1,4 @@
-const EXTENSION_ID = "pnnjhbjcfilbbblhoeegkchafkeghllp";
+const EXTENSION_ID = "lfklmmalkllmjckblbmbcnhinllbhebl";
 
 const splitCost = () => {
     chrome.runtime.sendMessage(

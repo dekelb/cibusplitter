@@ -1,7 +1,7 @@
 {
     "name": "CibuSplitter",
     "description": "CibuSplitter is a chrome extension intended to split group-order created in wolt to multiple Cibus cards.",
-    "version": "0.1",
+    "version": "0.1.1",
     "manifest_version": 3,
     "permissions": ["activeTab", "storage"],
     "host_permissions": [

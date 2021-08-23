@@ -1,4 +1,4 @@
-const EXTENSION_ID = "pnnjhbjcfilbbblhoeegkchafkeghllp";
+const EXTENSION_ID = "lfklmmalkllmjckblbmbcnhinllbhebl";
 const LANG = {
     participants: {
         he: "משתתפים",
@@ -31,7 +31,7 @@ function saveParticipants() {
                 .textContent.replace(/[^\d\.]/g, "")
         );
         const isHost =
-            spans[NAME_POSITION].nextElementSibling.textContent ==
+            spans[NAME_POSITION].nextElementSibling?.textContent ==
             LANG.host[curLang];
         participants[name] = {
             total,
