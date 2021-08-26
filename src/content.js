@@ -21,6 +21,11 @@ function saveParticipants() {
     container.querySelectorAll("li").forEach((liElement) => {
         const NAME_POSITION = 0;
 
+        if (liElement.getAttribute('class').indexOf("DetailedItemOption") > -1) {
+        // This is not a user's element
+            return;
+        }
+
         const spans = liElement.querySelectorAll("span");
         const name = spans[NAME_POSITION].textContent;
         const total = parseInt(
@@ -28,8 +33,9 @@ function saveParticipants() {
                 .filter(
                     (el) => el.getAttribute("class")?.indexOf("__price__") > -1
                 )[0]
-                .textContent.replace(/[^\d\.]/g, "")
-        );
+                ?.textContent.replace(/[^\d\.]/g, "")
+        ) || 0;
+
         const isHost =
             spans[NAME_POSITION].nextElementSibling?.textContent ==
             LANG.host[curLang];
