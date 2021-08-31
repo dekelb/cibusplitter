@@ -5,8 +5,8 @@ const splitCost = () => {
         EXTENSION_ID,
         { getAllData: true },
         (response) => {
-            const friends = response.friends;
-            const participants = response.participants;
+            const friends = response.friends || {};
+            const participants = response.participants || {};
 
             // This holds the cost of the order without the shipping, extra distance and minimum per order price
             const partialCost = Object.keys(participants).reduce(

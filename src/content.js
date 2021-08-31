@@ -106,7 +106,6 @@ window.addEventListener("load", () => {
     });
 
     if (window.location.href.endsWith("/checkout")) {
-        resetParticipants();
         setTimeout(registerMutationObserver, 2000);
     }
 });

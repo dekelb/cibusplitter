@@ -9,8 +9,8 @@ chrome.runtime.onMessageExternal.addListener(function (
         chrome.storage.local.get("participants", (localRes) => {
             chrome.storage.sync.get("friends", (syncRes) => {
                 sendResponse({
-                    participants: localRes.participants,
-                    friends: syncRes.friends,
+                    participants: localRes?.participants || {},
+                    friends: syncRes?.friends || {},
                 });
             });
         });
