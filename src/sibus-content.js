@@ -31,12 +31,12 @@ const splitCost = () => {
             document
                 .querySelectorAll("#friendsList label span")
                 .forEach((el) => {
-                    const name = el.textContent;
-                    if (name in participants) {
+                    const cibusName = el.textContent;
+                    if (cibusName in participants) {
                         el.click();
                     } else {
                         Object.keys(friends).every((woltName) => {
-                            if (name == friends[woltName]) {
+                            if (cibusName == friends[woltName] && woltName in participants) {
                                 el.click();
                                 return false;
                             }
@@ -44,6 +44,9 @@ const splitCost = () => {
                         });
                     }
                 });
+
+            // We start with all of the participants and remove those that we found one by one
+            const missingParticipants = new Set(Object.keys(participants).filter(name => !participants[name].isHost));
 
             // In the second pass we set the cost of each participant
             document
@@ -55,10 +58,12 @@ const splitCost = () => {
                     let p;
                     if (name in participants) {
                         p = participants[name];
+                        missingParticipants.delete(name);
                     } else {
                         Object.keys(friends).every((woltName) => {
                             if (name == friends[woltName]) {
                                 p = participants[woltName];
+                                missingParticipants.delete(woltName);
                                 return false;
                             }
                             return true;
@@ -81,6 +86,10 @@ const splitCost = () => {
                             );
                     }
                 });
+
+            if (missingParticipants.size > 0) {
+                alert(`CibuSplitter: Some participants are missing: ${[...missingParticipants].join(", ")}. Use the extension's icon to add them to the conversion table and split again.`)
+            }
         }
     );
 };
