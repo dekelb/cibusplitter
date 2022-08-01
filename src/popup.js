@@ -149,6 +149,39 @@ const fillTables = () => {
     fillOrderTable();
 }
 
+const exportFriends = () => {
+    chrome.storage.sync.get("friends", function (result) {
+        if (!result.friends) {
+            alert("Friends list is empty");
+            return;
+        }
+        navigator.clipboard.writeText(JSON.stringify(result.friends)).then(() => {
+            alert("Friends list copied to clipboard");
+        }
+        );
+    });
+};
+
+const importFriends = () => {
+    const friends = prompt("Please paste the friends list here:");
+    const table = d.querySelector("#conversion-table");
+    let parsed = {};
+
+    try {
+        parsed = JSON.parse(friends);
+        // TODO: Validate friends list structure
+    } catch (e) {
+        if (e instanceof SyntaxError) {
+            alert("Friends list is invalid.");
+            return;
+        } else {
+            throw e;
+        }
+    }
+    chrome.storage.sync.set({ "friends": parsed });
+    fillTables();
+};
+
 window.addEventListener("load", () => {
     fillTables();
     registerClickHandlers();
@@ -160,5 +193,17 @@ window.addEventListener("load", () => {
                 const activeTab = tabs[0];
                 chrome.tabs.sendMessage(activeTab.id, {"message": "splitAgain"});
             });
+        })
+    
+        document
+        .getElementById("import-friends")
+        .addEventListener("click", () => {
+            importFriends();
+        })
+
+        document
+        .getElementById("export-friends")
+        .addEventListener("click", () => {
+            exportFriends();
         })
 });

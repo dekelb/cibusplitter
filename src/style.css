@@ -21,6 +21,10 @@ h1 {
     margin: 10px 0;
     font-size: 1.1rem;
 }
+#settings {
+    direction: rtl;
+    display: flex;
+}
 #split-again {
     float: left;
     cursor: pointer;
@@ -28,6 +32,20 @@ h1 {
     padding: 4px;
 }
 #split-again:hover {
+    background: #C2C2C2;
+    transition: 0.3s ease;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 0.125rem 0px,
+    rgb(0 0 0 / 24%) 0px 0.125rem 0.125rem 0px;
+}
+#export-friends, #import-friends {
+    float: left;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+#export-friends:hover, #import-friends:hover {
     background: #C2C2C2;
     transition: 0.3s ease;
     box-shadow: rgb(0 0 0 / 18%) 0px 0px 0.125rem 0px,
