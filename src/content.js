@@ -27,18 +27,15 @@ function saveParticipants() {
         }
 
         const spans = liElement.querySelectorAll("span");
-        const name = spans[NAME_POSITION].textContent;
-        const total = parseInt(
-            Array.from(spans)
-                .filter(
-                    (el) => el.getAttribute("class")?.indexOf("__price__") > -1
-                )[0]
-                ?.textContent.replace(/[^\d\.]/g, "")
-        ) || 0;
-
         const isHost =
             spans[NAME_POSITION].nextElementSibling?.textContent ==
             LANG.host[curLang];
+        const name = spans[NAME_POSITION].textContent;
+        const total = parseInt(
+            spans[isHost ? spans.length-1 : spans.length-2]?.textContent.replace(/[^\d\.]/g, "")
+        ) || 0;
+
+        
         participants[name] = {
             total,
             isHost,
